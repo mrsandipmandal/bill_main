@@ -1,0 +1,95 @@
+
+.advancedtable{
+    border-collapse: collapse;
+}
+.advancedtable tbody tr{
+	border:1px solid #37880a;
+	padding: 0px 0px;
+	font-family:Georgia,"font-family: Arial, Helvetica, sans-serif;
+	font-size:14px;
+	
+	color: #000000;
+}
+
+
+.advancedtable thead tr{
+	font-family:Georgia,"font-family: Arial, Helvetica, sans-serif;
+	font-size:14px;
+	font-style:italic;
+	font-size-adjust:none;
+	font-stretch:normal;
+	font-variant:normal;
+	font-weight:bold;
+	background: url(images/mbg.jpg);
+	border-top:1px solid #BBB;
+	border-bottom:1px solid #BBB;
+	padding: 2px 5px;
+
+}
+
+
+
+tfoot tr{
+	background-color:#7d0f01;
+
+	color:#FFFFFF;
+	font-size:11px;
+	padding:0.3em;
+	background: url(images/blank.png);
+}
+
+.odd{
+background-color: #d7ebf9;
+    color: #2887d6;
+}
+.even{
+background-color: #62bbe8;
+    color: #000;
+
+}
+.odd:hover {
+background-color: #c0e9b7;
+color:#e53b36;
+}
+.even:hover {
+background-color: #c0e9b7;
+color:#e53b36;
+}
+input.sc {
+	width: 100%;
+	font-family: Verdana, Geneva, sans-serif;
+	font-size: 12px;
+	color: #666666;
+	border: 2px solid #37880a;
+	
+	padding-right: 0px;
+	padding-bottom: 3px;
+	padding-left: 3px;
+	padding: 3px;
+}
+select.sc {
+	width: 100%;
+	font-family: Verdana, Geneva, sans-serif;
+	font-size: 12px;
+	color: #666666;
+	border: 2px solid #37880a;
+	
+	padding-right: 0px;
+	padding-bottom: 3px;
+	padding-left: 3px;
+	padding: 3px;
+}
+
+input.sc1 {
+	width: 100%;
+	font-family: Verdana, Geneva, sans-serif;
+	font-size: 12px;
+	color: #666666;
+	border: 1px solid #a7a7ab;
+	
+	padding-top: 2px;
+	padding-right: 0px;
+	padding-bottom: 2px;
+	padding-left: 4px;
+	padding: 4px;
+}

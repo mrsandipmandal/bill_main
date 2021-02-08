@@ -1,0 +1,165 @@
+
+.advancedtable{
+    border-collapse: collapse;
+}
+.advancedtable tbody tr td{
+	border:1px solid #dddddd;
+	padding: 0px 0px;
+
+	font-size:14px;
+	
+	color: #000000;
+}
+
+
+.advancedtable thead tr{
+	font-family:Georgia,"Times New Roman","Bitstream Charter",Times,serif;
+	font-size:18px;
+	font-style:italic;
+	font-size-adjust:none;
+	font-stretch:normal;
+	font-variant:normal;
+	font-weight:bold;
+	background: url(images/txtbg.png);
+	border-top:1px solid #BBB;
+	border-bottom:1px solid #BBB;
+	padding: 2px 5px;
+	color: #FFF;
+
+}
+
+
+
+tfoot tr{
+	background-color:#7d0f01;
+
+	color:#FFFFFF;
+	font-size:11px;
+	padding:0.3em;
+	background: url(images/blank.png);
+}
+
+.odd{
+background-color: #f3f4f5;
+    color: #e43834;
+}
+.even{
+background-color: #ffffff;
+    color:#e33431;
+
+}
+.odd:hover {
+background-color:#ffffff;
+color:#e33431;
+
+}
+.even:hover {
+background-color:#f5f5f5;
+color:#e33431;
+}
+
+input.sc {
+	width: 100%;
+	font-family: Verdana, Geneva, sans-serif;
+	font-size: 12px;
+	color: #666666;
+	border: 1px solid #d8d8d8;
+	
+	padding-right: 0px;
+	padding-bottom: 3px;
+	padding-left: 3px;
+	padding: 3px;
+}
+
+
+input.sc1 {
+	width: 100%;
+	font-family: Verdana, Geneva, sans-serif;
+	font-size: 12px;
+	color: #666666;
+	border: 1px solid #a7a7ab;
+	
+	padding-top: 2px;
+	padding-right: 0px;
+	padding-bottom: 2px;
+	padding-left: 4px;
+	padding: 4px;
+}
+
+.sc:focus {
+  border-color: #13895F;
+  outline: 0;
+  box-shadow: inset 0 4px 5px rgba(19,137,95,.075),0 0 8px rgba(19,137,95,.6);
+}
+.form-control:focus {
+  border-color: #13895F;
+  outline: 0;
+  box-shadow: inset 0 4px 5px rgba(19,137,95,.075),0 0 8px rgba(19,137,95,.6);
+}
+input:focus{
+	background-color:#dee9e5;
+}
+.templatemo-blue-button, 
+.templatemo-white-button {
+	border-radius: 2px;
+	padding: 10px 30px;
+	text-transform: uppercase;
+	transition: all 0.3s ease;
+}
+.templatemo-blue-button {
+	background-color: #39ADB4;
+	border: none;	
+	color: white;	
+}
+.templatemo-blue-button:hover {	background-color: #2A858B; }
+.templatemo-white-button {
+	background-color: white;
+	border: 1px solid #39ADB4;	
+	color: #39ADB4;	
+}
+
+
+input:focus{
+	background-color:#dee9e5;
+}
+select.sc {
+	width: 100%;
+	font-family: Verdana, Geneva, sans-serif;
+	font-size: 12px;
+	color: #666666;
+	border: 1px solid #d8d8d8;
+	padding-top: 2px;
+	padding-right: 0px;
+	padding-bottom: 2px;
+	padding-left: 7px;
+	padding: 7px;
+}
+select.rf {
+	width: 100%;
+	font-family: Verdana, Geneva, sans-serif;
+	font-size: 12px;
+	color: #666666;
+	border: 1px solid #d8d8d8;
+	padding-top: 2px;
+	padding-right: 0px;
+	padding-bottom: 2px;
+	padding-left: 7px;
+	padding: 7px;
+}
+
+.templatemo-blue-button1 {
+	border-radius: 2px;
+	padding: 3px 40px;
+	text-transform: uppercase;
+	transition: all 0.3s ease;
+}
+.templatemo-blue-button1 {
+	background-color: #39ADB4;
+	border: none;	
+	color: white;	
+}
+.templatemo-blue-button1:hover {	background-color: #2A858B; }
+a
+{
+cursor:pointer;
+}

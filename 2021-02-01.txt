@@ -1,0 +1,8 @@
+Time : 12:48:20
+SQLSTATE[42S02]: Base table or view not found: 1146 Table 'trn.main_user_type' doesn't exist
+Raw SQL : SELECT * FROM main_user_type
+
+Time : 11:32:52
+SQLSTATE[42000]: Syntax error or access violation: 1064 You have an error in your SQL syntax; check the manual that corresponds to your MariaDB server version for the right syntax to use near 'brnch != ?   ORDER BY sl ASC' at line 1
+Raw SQL : SELECT * FROM main_brnch WHERE sl > :sl   brnch != :brnch   ORDER BY sl ASC
+

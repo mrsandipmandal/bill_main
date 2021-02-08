@@ -1,0 +1,23 @@
+Time : 13:05:24
+SQLSTATE[42000]: Syntax error or access violation: 1064 You have an error in your SQL syntax; check the manual that corresponds to your MariaDB server version for the right syntax to use near 'ORDER BY sl ASC' at line 1
+Raw SQL : SELECT * FROM main_brnch WHERE sl > :sl  and FIND_IN_SET(sl ORDER BY sl ASC
+
+Time : 13:04:59
+SQLSTATE[42000]: Syntax error or access violation: 1064 You have an error in your SQL syntax; check the manual that corresponds to your MariaDB server version for the right syntax to use near 'ORDER BY sl ASC' at line 1
+Raw SQL : SELECT * FROM main_brnch WHERE sl > :sl  and FIND_IN_SET(sl ORDER BY sl ASC
+
+Time : 13:04:29
+SQLSTATE[42000]: Syntax error or access violation: 1064 You have an error in your SQL syntax; check the manual that corresponds to your MariaDB server version for the right syntax to use near 'ORDER BY sl ASC' at line 1
+Raw SQL : SELECT * FROM main_brnch WHERE brnch != :brnch  and FIND_IN_SET(sl ORDER BY sl ASC
+
+Time : 12:53:40
+SQLSTATE[42000]: Syntax error or access violation: 1064 You have an error in your SQL syntax; check the manual that corresponds to your MariaDB server version for the right syntax to use near '?  and brnch != ?   ORDER BY sl ASC' at line 1
+Raw SQL : SELECT * FROM main_brnch WHERE sl IN  :sl  and brnch != :brnch   ORDER BY sl ASC
+
+Time : 12:49:19
+SQLSTATE[42000]: Syntax error or access violation: 1064 You have an error in your SQL syntax; check the manual that corresponds to your MariaDB server version for the right syntax to use near 'ORDER BY sl ASC' at line 1
+Raw SQL : SELECT * FROM main_brnch WHERE brnch != :brnch   and find_in_set(sl ORDER BY sl ASC
+
+Time : 10:31:39
+SQLSTATE[42S02]: Base table or view not found: 1146 Table 'trn.main_loc' doesn't exist
+Raw SQL : SELECT * FROM main_loc WHERE sl= :sl LIMIT 1

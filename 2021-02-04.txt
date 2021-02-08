@@ -1,0 +1,63 @@
+Time : 12:47:18
+SQLSTATE[42000]: Syntax error or access violation: 1064 You have an error in your SQL syntax; check the manual that corresponds to your MariaDB server version for the right syntax to use near '?  ORDER BY sl ASC' at line 1
+Raw SQL : SELECT * FROM main_menu WHERE rmsl  :rmsl  ORDER BY sl ASC
+
+Time : 11:19:33
+SQLSTATE[42000]: Syntax error or access violation: 1064 You have an error in your SQL syntax; check the manual that corresponds to your MariaDB server version for the right syntax to use near 'bcd = ?   ORDER BY sl ASC' at line 1
+Raw SQL : SELECT * FROM main_vendor WHERE brnch != :brnch   bcd = :bcd   ORDER BY sl ASC
+
+Time : 10:25:49
+SQLSTATE[42S22]: Column not found: 1054 Unknown column 'nm' in 'field list'
+Raw SQL : INSERT INTO main_truck (sl,bcd,vendor,trkno,cat,whlr,dr_nm,nm,tds,omob,orc,chasis,engno,eby,edt,edtm) VALUES (:sl,:bcd,:vendor,:trkno,:cat,:whlr,:dr_nm,:nm,:tds,:omob,:orc,:chasis,:engno,:eby,:edt,:edtm)
+
+Time : 10:25:08
+SQLSTATE[42S22]: Column not found: 1054 Unknown column 'trkno' in 'where clause'
+Raw SQL : SELECT count(*) FROM main_loading_point WHERE bcd = :bcd  and trkno = :trkno  
+
+Time : 10:24:05
+SQLSTATE[42S22]: Column not found: 1054 Unknown column 'vendor' in 'field list'
+Raw SQL : INSERT INTO main_loading_point (sl,bcd,vendor,trkno,cat,whlr,dr_nm,dmob,licno,nm,tds,omob,orc,chasis,engno,eby,edt,edtm) VALUES (:sl,:bcd,:vendor,:trkno,:cat,:whlr,:dr_nm,:dmob,:licno,:nm,:tds,:omob,:orc,:chasis,:engno,:eby,:edt,:edtm)
+
+Time : 09:20:07
+SQLSTATE[42S22]: Column not found: 1054 Unknown column 'pnm' in 'field list'
+Raw SQL : INSERT INTO main_driver (nm,mob,licno,pnm,eby,edt,edtm) VALUES (:nm,:mob,:licno,:pnm,:eby,:edt,:edtm)
+
+Time : 09:20:02
+SQLSTATE[42S22]: Column not found: 1054 Unknown column 'pnm' in 'field list'
+Raw SQL : INSERT INTO main_driver (nm,mob,licno,pnm,eby,edt,edtm) VALUES (:nm,:mob,:licno,:pnm,:eby,:edt,:edtm)
+
+Time : 09:19:58
+SQLSTATE[42S22]: Column not found: 1054 Unknown column 'pnm' in 'field list'
+Raw SQL : INSERT INTO main_driver (nm,mob,licno,pnm,eby,edt,edtm) VALUES (:nm,:mob,:licno,:pnm,:eby,:edt,:edtm)
+
+Time : 09:19:55
+SQLSTATE[42S22]: Column not found: 1054 Unknown column 'pnm' in 'field list'
+Raw SQL : INSERT INTO main_driver (nm,mob,licno,pnm,eby,edt,edtm) VALUES (:nm,:mob,:licno,:pnm,:eby,:edt,:edtm)
+
+Time : 09:19:30
+SQLSTATE[42S22]: Column not found: 1054 Unknown column 'pnm' in 'field list'
+Raw SQL : INSERT INTO main_driver (nm,mob,licno,pnm,eby,edt,edtm) VALUES (:nm,:mob,:licno,:pnm,:eby,:edt,:edtm)
+
+Time : 09:18:58
+SQLSTATE[42S22]: Column not found: 1054 Unknown column 'pnm' in 'field list'
+Raw SQL : INSERT INTO main_driver (nm,mob,licno,pnm,eby,edt,edtm) VALUES (:nm,:mob,:licno,:pnm,:eby,:edt,:edtm)
+
+Time : 09:18:51
+SQLSTATE[42S22]: Column not found: 1054 Unknown column 'pnm' in 'field list'
+Raw SQL : INSERT INTO main_driver (nm,mob,licno,pnm,eby,edt,edtm) VALUES (:nm,:mob,:licno,:pnm,:eby,:edt,:edtm)
+
+Time : 09:18:50
+SQLSTATE[42S22]: Column not found: 1054 Unknown column 'pnm' in 'field list'
+Raw SQL : INSERT INTO main_driver (nm,mob,licno,pnm,eby,edt,edtm) VALUES (:nm,:mob,:licno,:pnm,:eby,:edt,:edtm)
+
+Time : 09:18:24
+SQLSTATE[42S22]: Column not found: 1054 Unknown column 'pnm' in 'field list'
+Raw SQL : INSERT INTO main_driver (nm,mob,licno,pnm,eby,edt,edtm) VALUES (:nm,:mob,:licno,:pnm,:eby,:edt,:edtm)
+
+Time : 09:18:13
+SQLSTATE[42S22]: Column not found: 1054 Unknown column 'pnm' in 'field list'
+Raw SQL : INSERT INTO main_driver (nm,mob,licno,pnm,eby,edt,edtm) VALUES (:nm,:mob,:licno,:pnm,:eby,:edt,:edtm)
+
+Time : 09:16:14
+SQLSTATE[42S22]: Column not found: 1054 Unknown column 'pnm' in 'field list'
+Raw SQL : INSERT INTO main_driver (nm,mob,licno,pnm,eby,edt,edtm) VALUES (:nm,:mob,:licno,:pnm,:eby,:edt,:edtm)
