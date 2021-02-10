@@ -11,6 +11,7 @@ if (isset($_REQUEST['pnm'])) {
 }
 $user_current_level = $Members->User_Details->userlevel;
 $user_current_bcd = $Members->User_Details->bcd;
+$user_currently_loged = $Members->User_Details->username;
 
 include "header.php";
 ?>

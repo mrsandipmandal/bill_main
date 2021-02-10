@@ -3,11 +3,14 @@
 error_reporting(E_ALL);
 include "membersonly.inc.php";
 $Members  = new isLogged(1);
-	
+$user_current_level = $Members->User_Details->userlevel;
+$user_current_bcd = $Members->User_Details->bcd;
+$user_currently_loged = $Members->User_Details->username;	
 function array_except($array, $keys) {
   return array_diff_key($array, array_flip((array) $keys));   
 }
 $_POST["eby"]=$Members->User_Details->username;
+date_default_timezone_set('Asia/Kolkata');
 $_POST["edt"]=date('Y-m-d');
 $_POST["edtm"]=date('d-M-Y h:i:s A');
 $tbl_nm=$_POST['table_name'];

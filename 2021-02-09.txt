@@ -1,0 +1,20 @@
+Time : 12:40:01
+SQLSTATE[HY093]: Invalid parameter number: parameter was not defined
+Raw SQL : INSERT INTO main_drcr_log (sl,vno,bcd,sbill,cbill,vendor,cid,dt,nrtn,typ,idt,mtd,mtddtl,dldgr,cldgr,amm,edt,eby,edtm,pno,it,stat) VALUES (:sl,:vno,:bcd,:sbill,:cbill,:vendor,:cid,:dt,:nrtn,:typ,:idt,:mtd,:mtddtl,:dldgr,:cldgr,:amm,:edt,:eby,:edtm,:pno,:it,:stat)
+
+Time : 12:39:59
+SQLSTATE[HY093]: Invalid parameter number: parameter was not defined
+Raw SQL : INSERT INTO main_drcr_log (sl,vno,bcd,sbill,cbill,vendor,cid,dt,nrtn,typ,idt,mtd,mtddtl,dldgr,cldgr,amm,edt,eby,edtm,pno,it,stat) VALUES (:sl,:vno,:bcd,:sbill,:cbill,:vendor,:cid,:dt,:nrtn,:typ,:idt,:mtd,:mtddtl,:dldgr,:cldgr,:amm,:edt,:eby,:edtm,:pno,:it,:stat)
+
+Time : 12:38:08
+SQLSTATE[HY093]: Invalid parameter number: parameter was not defined
+Raw SQL : INSERT INTO main_drcr_log (sl,vno,bcd,sbill,cbill,vendor,cid,dt,nrtn,typ,idt,mtd,mtddtl,dldgr,cldgr,amm,edt,eby,edtm,pno,it,stat) VALUES (:sl,:vno,:bcd,:sbill,:cbill,:vendor,:cid,:dt,:nrtn,:typ,:idt,:mtd,:mtddtl,:dldgr,:cldgr,:amm,:edt,:eby,:edtm,:pno,:it,:stat)
+
+Time : 12:35:55
+SQLSTATE[HY000]: General error: 2031 
+Raw SQL : INSERT INTO main_drcr_log (sl,vno,bcd,sbill,cbill,vendor,cid,dt,nrtn,typ,idt,mtd,mtddtl,dldgr,cldgr,amm,edt,eby,edtm,pno,it,stat) VALUES (:sl,:vno,:bcd,:sbill,:cbill,:vendor,:cid,:dt,:nrtn,:typ,:idt,:mtd,:mtddtl,:dldgr,:cldgr,:amm,:edt,:eby,:edtm,:pno,:it,:stat)
+
+Time : 12:35:51
+SQLSTATE[HY000]: General error: 2031 
+Raw SQL : INSERT INTO main_drcr_log (sl,vno,bcd,sbill,cbill,vendor,cid,dt,nrtn,typ,idt,mtd,mtddtl,dldgr,cldgr,amm,edt,eby,edtm,pno,it,stat) VALUES (:sl,:vno,:bcd,:sbill,:cbill,:vendor,:cid,:dt,:nrtn,:typ,:idt,:mtd,:mtddtl,:dldgr,:cldgr,:amm,:edt,:eby,:edtm,:pno,:it,:stat)
+

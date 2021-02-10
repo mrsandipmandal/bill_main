@@ -2,20 +2,28 @@
 ini_set("display_errors", "1");
 error_reporting(E_ALL);
 include "membersonly.inc.php";
+
 $Members  = new isLogged(1);
-$user_current_level = $Members->User_Details->userlevel;
-$user_current_bcd = $Members->User_Details->bcd;
-$user_currently_loged = $Members->User_Details->username;
 $grpnm = "";
 if (isset($_REQUEST['pnm'])) {
 	$page_title = base64_decode($_REQUEST['pnm']);
 } else {
-	$page_title = "Dashboard";
+	$page_title = "";
 }
+
 $user_current_level = $Members->User_Details->userlevel;
 $user_current_bcd = $Members->User_Details->bcd;
+$user_currently_loged = $Members->User_Details->username;
 
 include "header.php";
+date_default_timezone_set('Asia/Kolkata');
+$fy=date('Y');
+$fm=date('m');
+if($fm<4)
+{$fy--;
+}
+$fdt="01-04-".$fy;
+
 ?>
 <!-- Left side column. contains the logo and sidebar -->
 <aside class="main-sidebar">
@@ -65,16 +73,16 @@ include "header.php";
 					<!-- form start -->
 					<div class="box-body">
 
-						<form method="POST" action="freights.php" enctype="multipart/form-data">
-						<input type="hidden"   value=""  id="sl" name="sl"   />
+						<form method="POST" action="openings.php" enctype="multipart/form-data">
+						<input type="hidden" value="" id="sl" name="sl" />
 									
 						
 							<div class="row">
-							<div class="col-md-3">
+							<div class="col-md-4">
 									<div class="form-group">
 										<label>BRANCH  : </label>
-										<select id="bcd" name="bcd" class="form-control" required onchange="get_cust();freight_list();" style="width:95%">	
-										<option value="" >---Select---</option>							
+										<select id="bcd" name="bcd" class="form-control ch_req" required  onchange="get_vendor_op();opening_list()">		
+															
 										<?php
 										if($user_current_level<0)
 										{
@@ -95,7 +103,7 @@ include "header.php";
 
 											$plist  = new Init_Table();
 											$plist->set_table("main_brnch", "sl");
-											 $group2=$plist->search_custom($fld2,$op2,'',array('sl' => 'ASC'));
+											 $group2=$plist->search_custom($fld2,$op2,'',array('brnch' => 'ASC'));
 
 											foreach($group2 as $key2=>$ptp)
 											{
@@ -108,42 +116,85 @@ include "header.php";
 											?>
 										</select>
 									</div>
-								</div>				
-								<!-- end col-3 -->
-								<div class="col-md-3">
-									<div class="form-group">
-										<label>CUSTOMER : </label>
-										<div id="get_cust">
-										<select id="cid" name="cid" class="form-control" required onchange="get_loding()" style="width:95%">
-											<option value="">---Select---</option>
-										
-										</select>
-									</div>
-									</div>
 								</div>	
-
-								<div class="col-md-3">
+								<div class="col-md-4">
 									<div class="form-group">
 
-										<label>LOADING POINT  : </label>
+										<label>LEDGER HEAD : </label>
 
-										<div id="get_loding">
-										<select id="lp" name="lp" class="form-control" required  style="width:95%">
+										<select id="ldgr" name="ldgr" class="form-control ch_req" required   onchange="get_vendor_op();opening_list()" >
+										<option value="">---Select---</option>										
+										<?php
+										$fld_ldgr['sl']='-1';
+										$op_ldgr['sl']="!=, ";
+
+										$plist  = new Init_Table();
+										$plist->set_table("main_ledg", "sl");
+										$group2=$plist->search_custom($fld_ldgr,$op_ldgr,'',array('nm' => 'ASC'));
+
+										foreach($group2 as $key2=>$ptp)
+										{
+										
+
+										?>
+										<option value="<?php echo $ptp['sl']; ?>"><?php echo $ptp['nm']; ?></option>
+										<?php
+
+										}
+										?>
+										</select>
+									</div>
+								</div>
+								<div class="col-md-4" id="vendor_div" style="display: none;">
+									<div class="form-group">
+										<label>VENDOR : </label>
+										<div id="get_vendor">
+										<select id="vendor" name="vendor" class="form-control ch_req"  style="width:95%">
 											<option value="">---Select---</option>
 										
 										</select>
+
 									</div>
 									</div>
 								</div>			
-								<div class="col-md-3">
-							<div class="form-group">
-
-							<label>Upload Excel file <font color="red">(.xlsx,.xls) </font> <a href="sample/temp.xlsx"><b><u><i>Download Sample Excel File</i></u></b></a> </label>
-
-					<input type="file" name="file" id="file" accept=".xlsx,.xls" class="btn btn-info" style="width:100%" required>
-							</div>
-							</div>		
 								<!-- end col-3 -->
+								<div class="col-md-4">
+									<div class="form-group">
+
+										<label>DATE  : </label>
+
+										<input type="text" value="<?php echo $fdt;?>"  id="dt" name="dt" required class="form-control datepicker" />
+									</div>
+								</div>		
+								<div class="col-md-4">
+									<div class="form-group">
+
+										<label>AMMOUNT ( Rs. ) : </label>
+
+										<input type="number" value=""  id="amm" step="any" name="amm" required class="form-control brd" />
+									</div>
+								</div>	
+								<div class="col-md-4">
+									<div class="form-group">
+
+										<label>DR/CR : </label>
+
+										<select id="drcr" name="drcr" class="form-control " >
+											<option value="1">DR</option>
+											<option value="-1">CR</option>
+										
+										</select>
+									</div>
+								</div>	
+								<div class="col-md-4">
+									<div class="form-group">
+
+										<label>NARRATION : </label>
+
+										<input type="text" value=""  id="nrtn" name="nrtn"  class="form-control brd" />
+									</div>
+								</div>	
+							
 
 							
 							</div>
@@ -151,18 +202,18 @@ include "header.php";
 
 
 							<div class="row">
-								<input type="hidden" name="table_name" value="main_freight" class="form-control" />
-								<input type="hidden" name="page_name" value="freight.php" class="form-control" />
+								<input type="hidden" name="typ" value="11" class="form-control" />
+								<input type="hidden" name="table_name" value="main_drcr" class="form-control" />
+								<input type="hidden" name="page_name" value="opening.php" class="form-control" />
 								<!-- begin col-6 -->
 								<div class="col-md-12">
 									<div class="form-group" id="fl_fld">
 
 									</div>
 									<!-- end col-6 -->
-									<div class="form-group pull-right">
+									<div class="form-group pull-left">
 										<div class="col-md-12">
 											<button type="submit" class="btn btn-sm btn-success">Submit</button>
-											<input type="button" class="btn btn-sm btn-danger" value="Clear All" name="B1" onclick="freight_del()" >
 										</div>
 									</div>
 
@@ -221,7 +272,7 @@ include "footer.php";
 window.onload = function() {
     if (window.jQuery) {  
         // jQuery is loaded  
-        freight_list();
+        opening_list();
     } 
 }
 
@@ -229,7 +280,10 @@ window.onload = function() {
 function pagnt(pno){
 var ps=document.getElementById('ps').value;
 var bcd = document.getElementById('bcd').value;
-$('#show').load("freight_list.php?ps="+ps+"&pno="+pno+"&bcd="+bcd).fadeIn('fast');
+var ldgr = document.getElementById('ldgr').value;
+var vendor = document.getElementById('vendor').value;
+
+$('#show').load("opening_list.php?ps="+ps+"&pno="+pno+"&bcd=" + bcd + "&ldgr=" + ldgr + "&vendor=" + vendor).fadeIn('fast');
 $('#pgn').val=pno;
 }
 
@@ -238,11 +292,8 @@ pno=document.getElementById('pgn').value;
 pagnt(pno);
 }
 
-//$('#bcd').chosen({no_results_text: "Oops, nothing found!",});
-//$('#cid').chosen({no_results_text: "Oops, nothing found!",});
 $('#bcd').chosen({no_results_text: "Oops, nothing found!",allow_single_deselect: true,});
-$('#cid').chosen({no_results_text: "Oops, nothing found!",allow_single_deselect: true,});
-$('#lp').chosen({no_results_text: "Oops, nothing found!",allow_single_deselect: true,});
+$('#ldgr').chosen({no_results_text: "Oops, nothing found!",allow_single_deselect: true,});
 </script>
 
 </body>

@@ -3,7 +3,9 @@ ini_set("display_errors", "1");
 error_reporting(E_ALL);
 include "membersonly.inc.php";
 $Members  = new isLogged(1);
-
+$user_current_level = $Members->User_Details->userlevel;
+$user_current_bcd = $Members->User_Details->bcd;
+$user_currently_loged = $Members->User_Details->username;
 $pdo= new MainPDO();
 
 $pno='';
@@ -70,6 +72,7 @@ $limit1="limit ".$start.",".$ps;
 <th style="text-align:left">BRANCH</font></th>
 <th style="text-align:left">CUSTOMER</font></th>
 <th style="text-align:left">LOADING POINT</font></th>
+<th style="text-align:left">Nick NAME</font></th>
 </tr>
 <?php
 
@@ -78,6 +81,7 @@ $limit1="limit ".$start.",".$ps;
 		{  
 			$sl=$row['sl'];
 			$nm=$row['nm'];
+			$nnm=$row['nnm'];
 			$bcd=$row['bcd'];
 			$cid=$row['cid'];	
 			$edt=$row['edt'];
@@ -102,6 +106,7 @@ $limit1="limit ".$start.",".$ps;
 		<td align="left"><?php echo $brnch_nm;?></td>
 		<td align="left"><?php echo $cust_nm;?> - <?php echo $cust_ccd;?></td>
 		<td align="left"><?php echo $nm;?></td>
+		<td align="left"><?php echo $nnm;?></td>
 	
 		</tr>	
 <?php

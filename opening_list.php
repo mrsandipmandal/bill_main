@@ -6,6 +6,7 @@ $Members  = new isLogged(1);
 $user_current_level = $Members->User_Details->userlevel;
 $user_current_bcd = $Members->User_Details->bcd;
 $user_currently_loged = $Members->User_Details->username;
+
 $pdo= new MainPDO();
 
 $pno='';
@@ -30,17 +31,27 @@ $start=($pno-1)*$ps;
 $sl=0;
 $sln=$start;
 
+if($_REQUEST['bcd']!='')
+{
+	$fld1['bcd']=$_REQUEST['bcd'];
+	$op1['bcd']="=, and";
+}
+$qry="";
+$ldgr="";	
+if($_REQUEST['ldgr']!='')
+{
+$ldgr=$_REQUEST['ldgr'];	
+$qry=" and (dldgr='$ldgr' or cldgr='$ldgr')";
+}
 
-
-
-$fld1['sl']='0';
-$op1['sl']=">, ";
+$fld1['typ']='11';
+$op1['typ']="=, $qry";
 
 $limit1="limit ".$start.",".$ps;
 
 
 		$list1  = new Init_Table();
-		$list1->set_table("main_cust","sl");
+		$list1->set_table("main_drcr","sl");
 
 		$rcntttl=$list1->row_count_custom($fld1,$op1,'',array('sl' => 'ASC'));
 
@@ -59,55 +70,64 @@ $limit1="limit ".$start.",".$ps;
 <br>
 <table  width="100%" class="advancedtable">
 <tr bgcolor="#e8ecf6">
-<th width="7%">ACTION</font></th>
-<th width="5%" style="text-align:center">SL</font></th>
-<th style="text-align:left">CUSTOMER</font></th>
-<th style="text-align:left">CUSTOMER CODE</font></th>
-<th style="text-align:left">ADDRESS</font></th>
-<th style="text-align:left">GSTIN</font></th>
-
-<th style="text-align:left">PAN</font></th>
-<th style="text-align:left">TAN</font></th>
-<th style="text-align:left">GSTIN DATE</font></th>
+<th width="3%">ACTION</font></th>
+<th width="3%" style="text-align:center">SL</font></th>
+<th align="center" width="12%">BRANCH</th>
+<th align="center" width="6%">DATE</th>
+<th align="center" width="15%">LEDGER HEAD</th>
+<th align="center" width="10%">OPENING BALANCE</th>
+<th align="center" width="10%">DR. / CR.</th>
+<th align="center" width="19%">NARRATION</th>
 </tr>
 <?php
 
 
 		foreach($group as $key=>$row)
 		{  
-			$sl=$row['sl'];
-			$nm=$row['nm'];
-			$ccd=$row['ccd'];
-			$addr=$row['addr'];
-			$gstin=$row['gstin'];
-			$pan=$row['pan'];
-			$tan=$row['tan'];
-			$gstdt=$row['gstdt'];
-			$edt=$row['edt'];
-			$edtm=$row['edtm'];
-			$eby=$row['eby'];
-			$stat=$row['stat'];
+			$sl= $row['sl'];
+			$cldgr= $row['cldgr'];
+			$dldgr= $row['dldgr'];
+			$dt= $row['dt'];
+			$amm= $row['amm'];
+			$nrtn= $row['nrtn'];
+			$eby= $row['eby'];
+			$vendor= $row['vendor'];
+			$bcd= $row['bcd'];
 		
-			if($gstdt<'2000-01-01'){$gstdt="";}else{$gstdt=date('d-m-Y',strtotime($gstdt));}
 	$sln++;      
-
+	$dt=date('d-M-Y', strtotime($dt));
+	if($cldgr=='-1')
+	{$ldgr=$dldgr;
+	 $drcr="Dr.";
+	}
+	else
+	{$ldgr=$cldgr;
+	$drcr="Cr.";
+	}
+	$vendor_nm="";
+	if($vendor!=null)
+	{
+	$vendor_nm=" : ".$pdo->get_value('main_vendor','nm',array('sl'=>$vendor));
+	}
+	$ldgr_nm=$pdo->get_value('main_ledg','nm',array('sl'=>$ldgr)).$vendor_nm;
+	$brnch_nm=$pdo->get_value('main_brnch','brnch',array('sl'=>$bcd));
 	?>
-	<tr>
-		<td  align="left" style="padding-left:25px;">
-		<a title="Click to Edit"  style="cursor:pointer" href="cust_edt.php?sl=<?php echo $sl;?>"><i class="fa fa-pencil-square-o"></i></a>&nbsp;
-		
-		<a title="Click to Delete" style="cursor:pointer;color:red;font-size:17px" ><i class="fa fa-trash-o"></i></a>
-	
-		</td>
-		<td align="center"><?php echo $sln;?></td>
-		<td align="left"><?php echo $nm;?></td>
-		<td align="left"><?php echo $ccd;?></td>
-		<td align="left"><?php echo $addr;?></td>
-		<td align="left"><?php echo $gstin;?></td>
-		<td align="left"><?php echo $pan;?></td>
-		<td align="left"><?php echo $tan;?></td>
-		<td align="left"><?php echo $gstdt;?></td>
-		</tr>	
+<tr>
+<td  align="left" style="padding-left:25px;">
+<a title="Click to Edit"  style="cursor:pointer" href="opening_edt.php?sl=<?php echo $sl;?>"><i class="fa fa-pencil-square-o"></i></a>&nbsp;
+
+<a title="Click to Delete" style="cursor:pointer;color:red;font-size:17px" onclick="opening_del('<?php echo $sl;?>')" ><i class="fa fa-trash-o"></i></a>
+
+</td>
+<td align="center"><?php echo $sln;?></td>
+<td align="left" valign="top"><?php echo $brnch_nm;?></td>
+<td align="center" valign="top"><?php echo $dt;?></td>
+<td align="left" valign="top"><?php echo $ldgr_nm;?></td>
+<td  valign="top" align="right"><font color="red"><b><?php echo $amm;?></b></font></td>
+<td align="left" valign="top"><?php echo $drcr;?></td>
+<td align="left" valign="top"><?php echo $nrtn;?></td>
+
+</tr>	
 <?php
 }
 ?>

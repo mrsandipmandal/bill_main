@@ -3,7 +3,9 @@ ini_set("display_errors", "1");
 error_reporting(E_ALL);
 include "membersonly.inc.php";
 $Members  = new isLogged(1);
-
+$user_current_level = $Members->User_Details->userlevel;
+$user_current_bcd = $Members->User_Details->bcd;
+$user_currently_loged = $Members->User_Details->username;
 
 $fld2['sl']=0;
 $op2['sl']=">, ";

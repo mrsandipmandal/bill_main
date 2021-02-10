@@ -9,36 +9,31 @@ $user_currently_loged = $Members->User_Details->username;
 function array_except($array, $keys) {
   return array_diff_key($array, array_flip((array) $keys));   
 }
-$_POST["eby"]=$Members->User_Details->username;
 date_default_timezone_set('Asia/Kolkata');
+$_POST["eby"]=$Members->User_Details->username;
 $_POST["edt"]=date('Y-m-d');
 $_POST["edtm"]=date('d-M-Y h:i:s A');
 $tbl_nm=$_POST['table_name'];
 $page_name=$_POST['page_name'];
 
-if($_POST["sl"]!='')
+$_POST['dt']=date('Y-m-d',strtotime($_POST['dt']));
+
+if($_POST['drcr']=='-1')
 {
-	$fld['sl']=$_POST['sl'];
-	$op['sl']="!=, and";	
+$_POST['dldgr']='-1';
+$_POST['cldgr']=$_POST['ldgr'];
 }
-
-
-$fld['nm']=$_POST['nm'];
-$op['nm']="=,";
-
-$list  = new Init_Table();
-$list->set_table($tbl_nm,"sl");
-$count=$list->row_count_custom($fld,$op,'',array('sl' => 'ASC'));
-$msg="";
-if($count>0)	
+else
 {
-$msg="Data Already Exists!";	
-}	
+$_POST['cldgr']='-1';
+$_POST['dldgr']=$_POST['ldgr'];
+}
+$_POST['vno']=date('Ymdhis');
+$msg="";
 
 if($msg=="")
 {
-
-$exception=array('submit_form','table_name','page_name');
+$exception=array('submit_form','table_name','page_name','drcr','ldgr');
 $field=array_except($_POST,$exception);
 //print_r($_POST);
 		$pdo_obj  = new Init_Table();
@@ -59,7 +54,7 @@ $field=array_except($_POST,$exception);
 
    $msg="Data Submited Successfully...";
 
-
+ 
 ?>
 	
 <script>

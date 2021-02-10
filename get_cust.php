@@ -7,7 +7,7 @@ include("membersonly.inc.php");
     <option value="">---Select---</option>
     <?php
     $fld2['bcd']=$_REQUEST['bcd'];
-    $op2['bcd']="=, ";
+    $op2['bcd']="=, group by cid";
 
     $plist  = new Init_Table();
     $plist->set_table("main_loading_point", "sl");

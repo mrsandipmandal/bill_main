@@ -25,7 +25,7 @@ class MainPDO {
 		}
 		return null;
 	}
-	public function save($id = "0") {
+	public function save($id = "asd") {
 		$this->variables[$this->pk] = (empty($this->variables[$this->pk])) ? $id : $this->variables[$this->pk];
 		$fieldsvals = '';
 		$columns = array_keys($this->variables);
@@ -46,8 +46,9 @@ class MainPDO {
 		}
 		return null;
 	}
-	public function create() { 
-		$bindings   	= $this->variables;
+	public function create($fields=array()) { 
+	if(!empty($fields)) {$this->variables=$fields;}
+		$bindings = empty($fields) ? $this->variables : $fields;
 		if(!empty($bindings)) {
 			$fields     =  array_keys($bindings);
 			$fieldsvals =  array(implode(",",$fields),":" . implode(",:",$fields));

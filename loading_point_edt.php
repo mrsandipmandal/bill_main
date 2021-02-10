@@ -3,6 +3,9 @@ ini_set("display_errors", "1");
 error_reporting(E_ALL);
 include "membersonly.inc.php";
 $Members  = new isLogged(1);
+$user_current_level = $Members->User_Details->userlevel;
+$user_current_bcd = $Members->User_Details->bcd;
+$user_currently_loged = $Members->User_Details->username;
 $grpnm = "";
 if (isset($_REQUEST['pnm'])) {
 	$page_title = base64_decode($_REQUEST['pnm']);
@@ -71,7 +74,7 @@ $prd->find($sl);
 									
 						
 							<div class="row">
-							<div class="col-md-4">
+							<div class="col-md-3">
 									<div class="form-group">
 										<label>BRANCH  : </label>
 										<select id="bcd" name="bcd" class="form-control" required onchange="lp_list()">								
@@ -110,7 +113,7 @@ $prd->find($sl);
 									</div>
 								</div>				
 								<!-- end col-3 -->
-								<div class="col-md-4">
+								<div class="col-md-3">
 									<div class="form-group">
 										<label>CUSTOMER : </label>
 										<select id="cid" name="cid" class="form-control" required onchange="lp_list()">
@@ -131,7 +134,7 @@ $prd->find($sl);
 									</div>
 								</div>	
 
-								<div class="col-md-4">
+								<div class="col-md-3">
 									<div class="form-group">
 
 										<label>LOADING POINT  : </label>
@@ -140,7 +143,14 @@ $prd->find($sl);
 									</div>
 								</div>					
 								<!-- end col-3 -->
+								<div class="col-md-3">
+									<div class="form-group">
 
+										<label>Nick NAME : </label>
+
+										<input type="text"  value="<?php echo $prd->nnm ?>"  id="nnm" name="nnm"  required class="form-control brd" onkeypress='return event.charCode >= 48 && event.charCode <= 57 || event.charCode >=65 && event.charCode <= 90 || event.charCode >=97 && event.charCode <= 122' />
+									</div>
+								</div>		
 							
 							</div>
 					

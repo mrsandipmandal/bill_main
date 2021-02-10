@@ -204,3 +204,33 @@ function freight_submit()
     }
 
 }
+
+function get_vendor_op() {
+    var bcd = document.getElementById('bcd').value;
+    var ldgr = document.getElementById('ldgr').value;
+    if (ldgr == '21') {
+        $('#vendor_div').show();
+        $("#vendor").attr('required', '');
+
+        $('#get_vendor').load('get_vendor.php?bcd=' + bcd).fadeIn('fast');
+    } else {
+        $('#vendor_div').hide();
+        $('#vendor').val('');
+        $("#vendor").removeAttr('required');
+    }
+}
+
+function opening_list() {
+    var bcd = document.getElementById('bcd').value;
+    var ldgr = document.getElementById('ldgr').value;
+    var vendor = document.getElementById('vendor').value;
+
+    $('#show').load('opening_list.php?bcd=' + bcd + '&ldgr=' + ldgr + '&vendor=' + vendor).fadeIn('fast');
+}
+
+function opening_del(sl) {
+
+    if (confirm('Are You Sure To Delete...')) {
+        $('#show').load('opening_del.php?sl=' + sl).fadeIn('fast');
+    }
+}
